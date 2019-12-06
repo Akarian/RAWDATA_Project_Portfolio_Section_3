@@ -336,6 +336,10 @@ table.table tfoot .links a:hover{
   transition: 0.3s;
 }
 
+table#history-table td:last-child {
+  width: 8%;
+}
+
 .profile-wrapper {
   height: 140px;
   position: relative;
