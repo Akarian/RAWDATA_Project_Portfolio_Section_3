@@ -5,7 +5,7 @@
   <link href="css/app.css" rel="stylesheet" />
 </head>
 <body>
-
+  
   <!-- Navigation menu -->
   <header>
     <a href="#" data-bind="click: changeLogin"><img src="css/img/sova1.jpeg" class="logo"></a>
@@ -13,24 +13,25 @@
     <nav class="topnav">
       <ul>
         <li><a href="#" data-bind="click: changeSearch" id="searchActive">Search</a></li>
+        <li><a href="#" data-bind="click: changeHistory" id="historyActive">History</a></li>
         <li><a href="#" data-bind="click: changeMarks" id="marksActive">Marks</a></li>
         <li><a href="#" data-bind="click: changeProfile" id="profileActive">Profile</a></li>
       </ul>
     </nav>
     <div class="clearfix"></div>
   </header>
-
+  
   <!-- Shows the current template -->
   <div data-bind="template: {name: currentContent}"></div>
-
-
+  
+  
   <!-- Login template -->
   <script type="text/html" id="loginTemplate">
-
+    
     <div class="login-page">
-
+      
       <h1 id="templateTitle">StackOverflow Login</h1>
-
+      
       <!-- Login form -->
       <div class="form">
         <form id="register-form">
@@ -49,13 +50,13 @@
       </div>
     </div>
   </script>
-
+  
   <!-- Search Template -->
   <script type="text/html" id="searchTemplate">
-
+    
     <div class="search-page">
       <h1 id="templateTitle">StackOverflow Search</h1>
-
+      
       <div class="search-wrapper">
         <div class="search">
           <input type="text" class="searchText" placeholder="Search Text">
@@ -64,7 +65,7 @@
           </button>
         </div>
       </div>
-
+      
       <!-- Question table -->
       <table class="table" id="questionTable">
         <thead>
@@ -75,7 +76,7 @@
             <th>&hearts;</th>
           </tr>
         </thead>
-
+        
         <tbody>
           <tr class="clickable-row">
             <td></td>
@@ -102,7 +103,7 @@
             <td></td>
           </tr>
         </tbody>
-
+        
         <!-- Table Navigation -->
         <tfoot>
           <tr>
@@ -120,7 +121,7 @@
         </tfoot>
       </tr>
     </table>
-
+    
     <!-- Answer table -->
     <table class="table" id="answerTable">
       <thead>
@@ -131,7 +132,7 @@
           <th>&hearts;</th>
         </tr>
       </thead>
-
+      
       <tbody>
         <tr class="clickable-row">
           <td></td>
@@ -158,7 +159,7 @@
           <td></td>
         </tr>
       </tbody>
-
+      
       <!-- Table Navigation -->
       <tfoot>
         <tr>
@@ -180,12 +181,84 @@
 
 </script>
 
-<script type="text/html" id="marksTemplate">
+<script type="text/html" id="historyTemplate">
+  
+  <div class="history-page">
+    <h1 id="templateTitle">StackOverflow Search History</h1>
+    
+    <table class="table" id="history-table">
+      <thead>
+        <tr>
+          <th>Search Text</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      
+      <tbody>
+        <tr class="clickable-row">
+          <td></td>
+          <td></td>
+        </tr>
+        <tr class="clickable-row">
+          <td></td>
+          <td></td>
+        </tr>
+        <tr class="clickable-row">
+          <td></td>
+          <td></td>
+        </tr>
+        <tr class="clickable-row">
+          <td></td>
+          <td></td>
+        </tr>
+        <tr class="clickable-row">
+          <td></td>
+          <td></td>
+        </tr>
+        <tr class="clickable-row">
+          <td></td>
+          <td></td>
+        </tr>
+        <tr class="clickable-row">
+          <td></td>
+          <td></td>
+        </tr>
+        <tr class="clickable-row">
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+      
+      <!-- Table Navigation -->
+      <tfoot>
+        <tr>
+          <td colspan="4">
+            <div class="links">
+              <a href="#">&laquo;</a>
+              <a class="active" href="#">1</a>
+              <a href="#">2</a>
+              <a href="#">3</a>
+              <a href="#">4</a>
+              <a href="#">&raquo;</a>
+            </div>
+          </td>
+        </tr>
+      </tfoot>
+    </tr>
+  </table>
+  
+  
+  
+</div>
 
+</script>
+
+<script type="text/html" id="marksTemplate">
+  
   <div class="marks-page">
     <h1 id="templateTitle">StackOverflow Marks</h1>
   </div>
-
+  
   <table class="table" id="marksTable">
     <thead>
       <tr>
@@ -195,7 +268,7 @@
         <th>&hearts;</th>
       </tr>
     </thead>
-
+    
     <tbody>
       <tr class="clickable-row">
         <td></td>
@@ -246,7 +319,7 @@
         <td></td>
       </tr>
     </tbody>
-
+    
     <!-- Table Navigation -->
     <tfoot>
       <tr>
@@ -268,33 +341,33 @@
 </script>
 
 <script type="text/html" id="profileTemplate">
-
+  
   <div class="profile-page">
     <h1 id="templateTitle">StackOverflow Profile</h1>
+    
+    
+    <div class="profile-wrapper">
+      <table id="profile-table">
+        <tbody>
+          <tr class="clickable-row">
+            <td>Username:</td>
+            <td><img class="edit-information" src="css/img/editicon.jpg">PLACEHOLDER</td>
+          </tr>
+          <tr class="clickable-row">
+            <td>Password:</td>
+            <td><img class="edit-information" src="css/img/editicon.jpg">PLACEHOLDER</td>
+          </tr>
+          <tr class="clickable-row">
+            <td>Email:</td>
+            <td><img class="edit-information" src="css/img/editicon.jpg">PLACEHOLDER</td>
+          </tr>
+        </tbody>
+      </table>
+      <div id="delete-button">
+        <button>Delete</button>
+      </div>
+    </div>
   </div>
-
-<div class="profile-wrapper">
-  <table id="profile-table">
-    <tbody>
-      <tr class="clickable-row">
-        <td>Username:</td>
-        <td><img class="edit-information" src="css/img/editicon.jpg">PLACEHOLDER</td>
-      </tr>
-      <tr class="clickable-row">
-        <td>Password:</td>
-        <td><img class="edit-information" src="css/img/editicon.jpg">PLACEHOLDER</td>
-      </tr>
-      <tr class="clickable-row">
-        <td>Email:</td>
-        <td><img class="edit-information" src="css/img/editicon.jpg">PLACEHOLDER</td>
-      </tr>
-    </tbody>
-  </table>
-  <div id="delete-button">
-    <button>Delete</button>
-  </div>
-</div>
-
 </script>
 
 
