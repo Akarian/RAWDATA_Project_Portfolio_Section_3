@@ -52,6 +52,9 @@ namespace WebServiceToken
             {
                 app.UseDeveloperExceptionPage();
             }
+            
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
 
             app.UseRouting();
 
