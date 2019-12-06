@@ -6,6 +6,7 @@ define(["knockout", "dataService"], function (ko, ds) {
 
   var clearActive = () => {
     document.getElementById("searchActive").className = "";
+    document.getElementById("historyActive").className = "";
     document.getElementById("marksActive").className = "";
     document.getElementById("profileActive").className = "";
   };
@@ -18,6 +19,11 @@ define(["knockout", "dataService"], function (ko, ds) {
     clearActive();
     currentContent("searchTemplate")
     document.getElementById("searchActive").className = "active";
+  };
+  var changeHistory = () => {
+    clearActive();
+    currentContent("historyTemplate")
+    document.getElementById("historyActive").className = "active";
   };
   var changeMarks = () => {
     clearActive();
@@ -51,6 +57,7 @@ define(["knockout", "dataService"], function (ko, ds) {
     currentContent,
     changeContent,
     changeLogin,
+    changeHistory,
     changeSearch,
     changeMarks,
     changeProfile
