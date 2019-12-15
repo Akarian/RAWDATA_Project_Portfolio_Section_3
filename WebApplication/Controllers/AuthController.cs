@@ -50,9 +50,9 @@ namespace WebServiceToken.Controllers
 
             var pwd = PasswordService.HashPassword(dto.Password, salt, size);
 
-            _dataService.CreateUser(dto.UserName, pwd, dto.Email, salt, DateTime.Now);
+            var user = _dataService.CreateUser(dto.UserName, pwd, dto.Email, salt, DateTime.Now);
 
-            return CreatedAtRoute(null, salt);
+            return Ok(user);
         }
 
         [HttpPost("tokens")]
@@ -100,7 +100,7 @@ namespace WebServiceToken.Controllers
 
             var token = tokenHandler.WriteToken(securityToken);
 
-            return Ok(new {user.UserName, token});
+            return Ok(new {user.UserName, token, user.Email});
 
         }
         
@@ -128,16 +128,15 @@ namespace WebServiceToken.Controllers
 
             var user = _dataService.UpdateUser(dto.UserName, pwd, dto.Email, salt);
 
-            return Ok(salt);
+            return Ok(user);
         }
-
-        [Authorize]
+        
         [HttpDelete("{username}")]
         public ActionResult DeleteUser(string username)
         {
             if (!_dataService.DeleteUser(username))
                 return NotFound();
-            return Ok();
+            return Ok("succeed");
         }
         
     }

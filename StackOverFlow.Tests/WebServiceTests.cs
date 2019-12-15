@@ -85,7 +85,9 @@ namespace StackOverFlow.Tests
         [Fact]
         public void ApiAuth_User_Delete()
         {
-            DeleteData($"{AuthApi}/Paul");
+            var statusCode = DeleteData($"{AuthApi}/Aurélien");
+            
+            Assert.Equal(HttpStatusCode.OK, statusCode);
         }
         
         /* /api/mark */

@@ -71,6 +71,20 @@ namespace DataAccessLayer
         
         public Boolean DeleteUser(string username)
         {
+            var histories = GetSearchHistories(username);
+            
+            foreach (var history in histories)
+            {
+                DeleteSearchHistory(history.Id);
+            }
+            
+            var markings = GetMarkings(username);
+            
+            foreach (var marking in markings)
+            {
+                DeleteMarking(marking.Id);
+            }
+        
             using var db = new StackoverflowContext();
 
             var user = db.Users.Find(username);
@@ -211,9 +225,10 @@ namespace DataAccessLayer
             var query =
                 from searchhistory in db.SearchHistories
                 where searchhistory.UserName == username
+                orderby searchhistory.Date descending
                 select new SearchHistory(){Id = searchhistory.Id, Text = searchhistory.Text, Date = searchhistory.Date, UserName = searchhistory.UserName};
             
-            return db.SearchHistories.ToList();
+            return query.ToList();
         }
         
         public SearchHistory CreateSearchHistory(string text, string username, DateTime date)

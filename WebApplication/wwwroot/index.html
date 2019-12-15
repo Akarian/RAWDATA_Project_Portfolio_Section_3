@@ -4,398 +4,199 @@
   <title>StackOverflow</title>
   <link href="css/app.css" rel="stylesheet" />
 </head>
+
 <body>
-  
-  <!-- Navigation menu -->
-  <header>
-    <a href="#" data-bind="click: changeLogin"><img src="css/img/sova1.jpeg" class="logo"></a>
-    <div class="menu-toggle"><img src="css/img/menuicon.png" class="menu-icon"></div>
-    <nav class="topnav">
+
+<!-- Navigation menu -->
+<header>
+  <a href="" data-bind="click: changeLogin"><img src="css/img/sova1.jpeg" class="logo"></a>
+  <div class="menu-toggle"><img src="css/img/menuicon.png" class="menu-icon"></div>
+    <nav class="topnav" id="menuActive" hidden="">
       <ul>
-        <li><a href="#" data-bind="click: changeSearch" id="searchActive">Search</a></li>
-        <li><a href="#" data-bind="click: changeHistory" id="historyActive">History</a></li>
-        <li><a href="#" data-bind="click: changeMarks" id="marksActive">Marks</a></li>
-        <li><a href="#" data-bind="click: changeProfile" id="profileActive">Profile</a></li>
+        <li><a href="" data-bind="click: changeSearch" id="searchActive">Search</a></li>
+        <li><a href="" data-bind="click: changeHistory" id="historyActive">History</a></li>
+        <li><a href="" data-bind="click: changeMarks" id="marksActive">Marks</a></li>
+        <li><a href="" data-bind="click: changeProfile" id="profileActive">Profile</a></li>
+        <li><a href="" data-bind="click: changeLogin" id="">Logout</a></li>
       </ul>
     </nav>
-    <div class="clearfix"></div>
-  </header>
-  
-  <!-- Shows the current template -->
-  <div data-bind="template: {name: currentContent}"></div>
-  
-  
-  <!-- Login template -->
-  <script type="text/html" id="loginTemplate">
-    
-    <div class="login-page">
-      
-      <h1 class="templateTitle">StackOverflow Login</h1>
-      
-      <!-- Login form -->
-      <div class="form">
-        <form id="register-form">
-          <input type="text" placeholder="name"/>
-          <input type="password" placeholder="password"/>
-          <input type="text" placeholder="email address"/>
-          <button>create</button>
-          <p class="message">Already registered? <a href="#" data-bind="click: changeContent">Sign In</a></p>
-        </form>
-        <form id="login-form">
-          <input type="text" placeholder="username"/>
-          <input type="password" placeholder="password"/>
-          <button>login</button>
-          <p class="message">Not registered? <a href="#" data-bind="click: changeContent">Create an account</a></p>
-        </form>
+  <div class="clearfix"></div>
+</header>
+
+<!-- Shows the current template -->
+<div data-bind="template: {name: currentContent}"></div>
+
+<!-- Login template -->
+<script type="text/html" id="loginTemplate">
+  <div class="login-page">
+    <h1 class="templateTitle">StackOverflow Login</h1>
+
+    <!-- Login form -->
+    <div class="form">
+      <form id="register-form">
+        <input type="text" id="name_register" placeholder="name"/>
+        <input type="password" id="password_register" placeholder="password"/>
+        <input type="text" id="email_register" placeholder="email address" required pattern="[^@]+@[^@]+\.[a-zA-Z]{2,6}"/>
+        <button data-bind="click: registerUser">create</button>
+        <p class="message">Already registered? <a href="" data-bind="click: changeContent">Sign In</a></p>
+      </form>
+
+      <form id="login-form">
+        <input type="text" placeholder="username" id="name_login"/>
+        <input type="password" placeholder="password" id="password_login"/>
+        <button data-bind="click: loginUser">login</button>
+        <p class="message">Not registered? <a href="" data-bind="click: changeContent">Create an account</a></p>
+      </form>
+    </div>
+  </div>
+</script>
+
+<!-- Search Template -->
+<script type="text/html" id="searchTemplate">
+  <div class="search-page" id="search-parent">
+    <h1 class="templateTitle">StackOverflow Search</h1>
+
+    <div class="search-wrapper">
+      <div class="search">
+        <input type="text" class="searchText" placeholder="Search Text" id="searchTextInput">
+        <button type="submit" class="searchButton" data-bind="click: searchText">
+          <img src="css/img/search-icon.ico"></i>
+        </button>
       </div>
     </div>
-  </script>
-  
-  <!-- Search Template -->
-  <script type="text/html" id="searchTemplate">
-    
-    <div class="search-page">
-      <h1 class="templateTitle">StackOverflow Search</h1>
-      
-      <div class="search-wrapper">
-        <div class="search">
-          <input type="text" class="searchText" placeholder="Search Text">
-          <button type="submit" class="searchButton">
-            <img src="css/img/search-icon.ico"></i>
-          </button>
-        </div>
-      </div>
-      
-      <!-- Question table -->
-      <table class="table" id="questionTable">
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Body</th>
-            <th>Date</th>
-            <th>&hearts;</th>
-          </tr>
-        </thead>
-        
-        <tbody>
-          <tr class="clickable-row">
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr class="clickable-row">
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr class="clickable-row">
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr class="clickable-row">
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-        </tbody>
-        
-        <!-- Table Navigation -->
-        <tfoot>
-          <tr>
-            <td colspan="4">
-              <div class="links">
-                <a href="#">&laquo;</a>
-                <a class="active" href="#">1</a>
-                <a href="#">2</a>
-                <a href="#">3</a>
-                <a href="#">4</a>
-                <a href="#">&raquo;</a>
-              </div>
-            </td>
-          </tr>
-        </tfoot>
-      </tr>
-    </table>
-    
-    <!-- Answer table -->
-    <table class="table" id="answerTable">
+
+    <!-- Question table -->
+    <table class="table" id="questionTable" hidden="">
+      <caption class="caption-title">Questions</caption>
       <thead>
-        <tr>
-          <th>Title</th>
-          <th>Body</th>
-          <th>Date</th>
-          <th>&hearts;</th>
-        </tr>
-      </thead>
-      
-      <tbody>
-        <tr class="clickable-row">
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr class="clickable-row">
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr class="clickable-row">
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr class="clickable-row">
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-      </tbody>
-      
-      <!-- Table Navigation -->
-      <tfoot>
-        <tr>
-          <td colspan="4">
-            <div class="links">
-              <a href="#">&laquo;</a>
-              <a class="active" href="#">1</a>
-              <a href="#">2</a>
-              <a href="#">3</a>
-              <a href="#">4</a>
-              <a href="#">&raquo;</a>
-            </div>
-          </td>
-        </tr>
-      </tfoot>
-    </tr>
-  </table>
-</div>
-
-</script>
-
-<script type="text/html" id="historyTemplate">
-  
-  <div class="history-page">
-    <h1 id="templateTitle">StackOverflow Search History</h1>
-    
-    <table class="table" id="history-table">
-      <thead>
-        <tr>
-          <th>Search Text</th>
-          <th>Date</th>
-        </tr>
-      </thead>
-      
-      <tbody>
-        <tr class="clickable-row">
-          <td></td>
-          <td></td>
-        </tr>
-        <tr class="clickable-row">
-          <td></td>
-          <td></td>
-        </tr>
-        <tr class="clickable-row">
-          <td></td>
-          <td></td>
-        </tr>
-        <tr class="clickable-row">
-          <td></td>
-          <td></td>
-        </tr>
-        <tr class="clickable-row">
-          <td></td>
-          <td></td>
-        </tr>
-        <tr class="clickable-row">
-          <td></td>
-          <td></td>
-        </tr>
-        <tr class="clickable-row">
-          <td></td>
-          <td></td>
-        </tr>
-        <tr class="clickable-row">
-          <td></td>
-          <td></td>
-        </tr>
-      </tbody>
-      
-      <!-- Table Navigation -->
-      <tfoot>
-        <tr>
-          <td colspan="4">
-            <div class="links">
-              <a href="#">&laquo;</a>
-              <a class="active" href="#">1</a>
-              <a href="#">2</a>
-              <a href="#">3</a>
-              <a href="#">4</a>
-              <a href="#">&raquo;</a>
-            </div>
-          </td>
-        </tr>
-      </tfoot>
-    </tr>
-  </table>
-  
-  
-  
-</div>
-
-</script>
-
-<script type="text/html" id="marksTemplate">
-  
-  <div class="marks-page">
-    <h1 class="templateTitle">StackOverflow Marks</h1>
-  </div>
-  
-  <table class="table" id="marksTable">
-    <thead>
       <tr>
         <th>Title</th>
         <th>Body</th>
         <th>Date</th>
         <th>&hearts;</th>
       </tr>
-    </thead>
-    
-    <tbody>
+      </thead>
+
+      <tbody>
       <tr class="clickable-row">
         <td></td>
         <td></td>
         <td></td>
         <td></td>
       </tr>
+    </table>
+
+    <!-- Answer table -->
+    <table class="table" id="answerTable" hidden="">
+      <caption class="caption-title">Answers</caption>
+      <thead>
+      <tr>
+        <th>Body</th>
+        <th>Date</th>
+      </tr>
+      </thead>
+
+      <tbody>
       <tr class="clickable-row">
         <td></td>
         <td></td>
-        <td></td>
-        <td></td>
       </tr>
-      <tr class="clickable-row">
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+      </tbody>
+    </table>
+  </div>
+</script>
+
+<script type="text/html" id="historyTemplate">
+  <div class="history-page">
+    <h1 class="templateTitle">StackOverflow Search History</h1>
+
+    <table class="table" id="history-table">
+      <thead>
+      <tr>
+        <th  data-bind="click: changeSearch">Search Text</th>
+        <th>Date</th>
       </tr>
-      <tr class="clickable-row">
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr class="clickable-row">
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr class="clickable-row">
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr class="clickable-row">
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr class="clickable-row">
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-    </tbody>
-    
-    <!-- Table Navigation -->
-    <tfoot>
+      </thead>
+
+      <tbody id="history-tbody">
+      </tbody>
+
+      <!-- Table Navigation -->
+      <tfoot>
       <tr>
         <td colspan="4">
-          <div class="links">
-            <a href="#">&laquo;</a>
-            <a class="active" href="#">1</a>
-            <a href="#">2</a>
-            <a href="#">3</a>
-            <a href="#">4</a>
-            <a href="#">&raquo;</a>
+          <div class="links" id="links-history">
           </div>
         </td>
       </tr>
-    </tfoot>
-  </tr>
-</table>
+      </tfoot>
+    </table>
+  </div>
+</script>
 
+<script type="text/html" id="marksTemplate">
+  <div class="marks-page">
+    <h1 class="templateTitle">StackOverflow Marks</h1>
+  </div>
+
+  <table class="table" id="marksTable">
+    <thead>
+    <tr>
+      <th>Title</th>
+      <th>Body</th>
+      <th>Date</th>
+      <th>&hearts;</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr class="clickable-row">
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    </tbody>
+  </table>
 </script>
 
 <script type="text/html" id="profileTemplate">
-  
   <div class="profile-page">
     <h1 class="templateTitle">StackOverflow Profile</h1>
-    
-    
+
     <div class="profile-wrapper">
-      <table id="profile-table">
-        <tbody>
+      <form id="modify-form">
+        <table id="profile-table">
+          <tbody>
           <tr class="clickable-row">
             <td>Username:</td>
-            <td><img class="edit-information" src="css/img/editicon.jpg">PLACEHOLDER</td>
+            <td id="username_modify"></td>
           </tr>
+  
           <tr class="clickable-row">
             <td>Password:</td>
-            <td><img class="edit-information" src="css/img/editicon.jpg">PLACEHOLDER</td>
+            <td><input type="password" id="password_modify" placeholder="password"/></td>
           </tr>
+  
           <tr class="clickable-row">
             <td>Email:</td>
-            <td><img class="edit-information" src="css/img/editicon.jpg">PLACEHOLDER</td>
+            <td><input type="text" id="email_modify" placeholder="email address" required pattern="[^@]+@[^@]+\.[a-zA-Z]{2,6}"/></td>
           </tr>
-        </tbody><!DOCTYPE html>
-        <html>
-        <head>
-          <meta charset="utf-8" />
-          <title>Stack Overflow Viewer</title>
-          <link rel="stylesheet" href="js/lib/bootstrap/dist/css/bootstrap.min.css">
-          <link href="js/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
-          <link href="js/lib/jqcloud2/dist/jqcloud.css" rel="stylesheet" />
-          <link href="css/styles.css" rel="stylesheet" />
-        </head>
-        <body id="main">
-
-
-        <div data-bind="component: navbar"></div>
-
-        <div class="page-content">
-          <div data-bind="component : { name: selectedComponent, params: selectedParams }"></div>
+          </tbody>
+        </table>
+  
+        <div id="modify-button">
+          <button data-bind="click: modifyUser">Modify</button>
         </div>
-
-        <div data-bind="component: footer"></div>
-
-
-        <!-- Require JS -->
-        <script data-main="js/main.js" src="js/lib/requirejs/require.js"></script>
-</body>
-</html>
-      </table>
+      </form>
+      
       <div id="delete-button">
-        <button>Delete</button>
+        <button data-bind="click: deleteUser">Delete</button>
       </div>
     </div>
   </div>
 </script>
 
-
-<script data-main="js/main.js" src="lib/requirejs/require.js"></script> 
+<script data-main="js/main.js" src="lib/requirejs/require.js"></script>
 </body>
 </html>

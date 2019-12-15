@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using DataAccessLayer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -42,7 +43,9 @@ namespace WebServiceToken.Controllers
             
             if (search == null) return NotFound();
 
-            return Ok();
+            _dataService.CreateSearchHistory(searchtext.SearchText, searchtext.UserName, DateTime.Now);
+            
+            return Ok(search);
         }
     }
 }

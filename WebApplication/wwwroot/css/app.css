@@ -1,4 +1,4 @@
-#templateTitle {
+.templateTitle {
   margin-top: 10px;
   margin-left: auto;
   margin-right: auto;
@@ -341,7 +341,7 @@ table#history-table td:last-child {
 }
 
 .profile-wrapper {
-  height: 140px;
+  height: 230px;
   position: relative;
   z-index: 0;
   background: #FFFFFF;
@@ -383,6 +383,19 @@ table#profile-table .clickable-row:hover{
   outline: 0;
   background: #A8B1FB;
   width: 100px;
+  margin-top: 10px;
+  border: 0;
+  padding: 10px;
+  color: #FFFFFF;
+  font-size: 14px;
+  transition: all 0.3 ease;
+  cursor: pointer;
+}
+#modify-button button {
+  text-transform: uppercase;
+  outline: 0;
+  background: #A8B1FB;
+  width: 100px;
   margin-top: 130px;
   border: 0;
   padding: 10px;
@@ -391,6 +404,25 @@ table#profile-table .clickable-row:hover{
   transition: all 0.3 ease;
   cursor: pointer;
 }
-#delete-button button:hover,#delete-button button:active,#delete-button button:focus {
+#delete-button button:hover,#delete-button button:active,#delete-button button:focus,#modify-button button:hover,#modify-button button:active,#modify-button button:focus {
   background: #7F8BFA;
+}
+
+.error-message {
+  color : red;
+  text-align: center
+}
+
+.work-message {
+  color : green;
+  text-align: center
+}
+
+.caption-title {
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  color: #0D066C;
+  text-align: center;
+  margin-bottom: 10px;
 }
