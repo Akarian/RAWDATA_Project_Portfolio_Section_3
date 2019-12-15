@@ -5,7 +5,7 @@
   <link href="css/app.css" rel="stylesheet" />
 </head>
 
-<body>
+<tbody>
 
 <!-- Navigation menu -->
 <header>
@@ -17,7 +17,7 @@
         <li><a href="" data-bind="click: changeHistory" id="historyActive">History</a></li>
         <li><a href="" data-bind="click: changeMarks" id="marksActive">Marks</a></li>
         <li><a href="" data-bind="click: changeProfile" id="profileActive">Profile</a></li>
-        <li><a href="" data-bind="click: changeLogin" id="">Logout</a></li>
+        <li><a href="" data-bind="click: changePost" id="">Logout</a></li>
       </ul>
     </nav>
   <div class="clearfix"></div>
@@ -70,20 +70,21 @@
       <caption class="caption-title">Questions</caption>
       <thead>
       <tr>
-        <th>Title</th>
-        <th>Body</th>
-        <th>Date</th>
-        <th>&hearts;</th>
+        <th class="question-title">Title</th>
+        <th class="question-body">Body</th>
+        <th class="question-date">Date</th>
+        <th class="question-fav">&hearts;</th>
       </tr>
       </thead>
 
       <tbody>
-      <tr class="clickable-row">
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+      <tr class="clickable-row" data-href='#' data-bind="click: changePost">
+        <td class="question-title"></td>
+        <td class="question-body"></td>
+        <td class="question-date"></td>
+        <td class="question-fav"></td>
       </tr>
+      </tbody>
     </table>
 
     <!-- Answer table -->
@@ -91,15 +92,15 @@
       <caption class="caption-title">Answers</caption>
       <thead>
       <tr>
-        <th>Body</th>
-        <th>Date</th>
+        <th class="answer-body">Body</th>
+        <th class="answer-date">Date</th>
       </tr>
       </thead>
 
       <tbody>
       <tr class="clickable-row">
-        <td></td>
-        <td></td>
+        <td class="answer-body"></td>
+        <td class="answer-date"></td>
       </tr>
       </tbody>
     </table>
@@ -110,11 +111,12 @@
   <div class="history-page">
     <h1 class="templateTitle">StackOverflow Search History</h1>
 
+      <!-- History table -->
     <table class="table" id="history-table">
       <thead>
       <tr>
-        <th  data-bind="click: changeSearch">Search Text</th>
-        <th>Date</th>
+        <th class="history-text" data-bind="click: changeSearch">Search Text</th>
+        <th class="history-date">Date</th>
       </tr>
       </thead>
 
@@ -142,19 +144,19 @@
   <table class="table" id="marksTable">
     <thead>
     <tr>
-      <th>Title</th>
-      <th>Body</th>
-      <th>Date</th>
-      <th>&hearts;</th>
+      <th class="marks-title">Title</th>
+      <th class="marks-body">Body</th>
+      <th class="marks-date">Date</th>
+      <th class="marks-fav">&hearts;</th>
     </tr>
     </thead>
 
     <tbody>
     <tr class="clickable-row">
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td class="marks-title"></td>
+      <td class="marks-body"></td>
+      <td class="marks-date"></td>
+      <td class="marks-fav"></td>
     </tr>
     </tbody>
   </table>
@@ -172,28 +174,93 @@
             <td>Username:</td>
             <td id="username_modify"></td>
           </tr>
-  
+
           <tr class="clickable-row">
             <td>Password:</td>
             <td><input type="password" id="password_modify" placeholder="password"/></td>
           </tr>
-  
+
           <tr class="clickable-row">
             <td>Email:</td>
             <td><input type="text" id="email_modify" placeholder="email address" required pattern="[^@]+@[^@]+\.[a-zA-Z]{2,6}"/></td>
           </tr>
           </tbody>
         </table>
-  
+
         <div id="modify-button">
           <button data-bind="click: modifyUser">Modify</button>
         </div>
       </form>
-      
+
       <div id="delete-button">
         <button data-bind="click: deleteUser">Delete</button>
       </div>
     </div>
+  </div>
+</script>
+
+    <!-- Post Template -->
+<script type="text/html" id="postTemplate">
+  <div class="post-page" id="post-parent">
+    <h1 class="templateTitle">StackOverflow Post</h1>
+
+    <!-- Post table -->
+    <table class="table" id="post-table">
+      <caption class="caption-title">Post</caption>
+      <thead>
+      <tr>
+        <th class="post-title">Title</th>
+        <th class="post-body">Body</th>
+        <th class="post-date">Date</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <tr class="clickable-row">
+        <td class="post-title"></td>
+        <td class="post-body"></td>
+        <td class="post-date"></td>
+      </tr>
+      </tbody>
+    </table>
+
+    <!-- Accepted Answer table -->
+    <table class="table" id="accepted-answer-table">
+      <caption class="caption-title">Accepted Answers</caption>
+      <thead>
+      <tr>
+        <th class="accepted-answer-body">Body</th>
+        <th class="accepted-answer-date">Date</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <tr class="clickable-row">
+        <td class="accepted-answer-body"></td>
+        <td class="accepted-answer-date"></td>
+      </tr>
+      </tbody>
+    </table>
+
+              <!-- Comments table -->
+    <table class="table" id="comments-table">
+      <caption class="caption-title">Comments</caption>
+      <thead>
+      <tr>
+        <th class="comments-text">Text</th>
+        <th class="comments-score">Score</th>
+        <th class="comments-date">Date</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <tr class="clickable-row">
+        <td class="comments-text"></td>
+        <td class="comments-score"></td>
+        <td class="comments-date"></td>
+      </tr>
+      </tbody>
+    </table>
   </div>
 </script>
 

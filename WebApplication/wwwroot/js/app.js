@@ -2,11 +2,11 @@ define(["knockout", "services/dataService"], function (ko, ds) {
     // Global variables
     var username = "";
     var password_global = "";
-    
+
     var currentContent = ko.observable("loginTemplate");
 
     // Routes
-    
+
     var clearActive = () => {
         document.getElementById("searchActive").className = "";
         document.getElementById("historyActive").className = "";
@@ -57,7 +57,7 @@ define(["knockout", "services/dataService"], function (ko, ds) {
         currentContent("marksTemplate");
         document.getElementById("marksActive").className = "active";
         document.getElementById("menuActive").hidden = false;
-        
+
         var url = 'api/mark/markings';
         ds.post(url, { UserName: username }, (response) => {
             for(var i = 0;i<response.length;i++){
@@ -81,12 +81,12 @@ define(["knockout", "services/dataService"], function (ko, ds) {
     };
     var changeProfile = () => {
         clearActive();
-        currentContent("profileTemplate");  
+        currentContent("profileTemplate");
         document.getElementById("profileActive").className = "active";
         document.getElementById("menuActive").hidden = false;
         document.getElementById("username_modify").textContent = username;
         document.getElementById("password_modify").value = password_global;
-        
+
         var url = 'api/auth/tokens';
         ds.post(url, { UserName: username, Password: password_global }, (response) => {
             document.getElementById("email_modify").value = response.email;
@@ -103,19 +103,26 @@ define(["knockout", "services/dataService"], function (ko, ds) {
         }
     };
 
+        var changePost = () => {
+        clearActive();
+        currentContent("postTemplate");
+        document.getElementById("searchActive").className = "active";
+        document.getElementById("menuActive").hidden = false;
+    };
+
     // Register Page
     var registerUser = () => {
         var name = document.getElementById("name_register").value;
         var password = document.getElementById("password_register").value;
         var email = document.getElementById("email_register").value;
-        
+
         if(name !== "" && password !== "" && email !== ""){
             var url = 'api/auth/users';
             ds.post(url, { UserName: name, Password: password, Email: email}, (response) => {
                 if(document.getElementsByClassName("error-message").length !== 0){
                     removeElementsByClass("error-message");
                 }
-    
+
                 if(typeof(response.status) === 'undefined'){
                     changeContent();
                 }else{
@@ -123,21 +130,21 @@ define(["knockout", "services/dataService"], function (ko, ds) {
                         var b = document.getElementById("register-form");
                         var newP = document.createElement('p');
                         newP.classList.add("error-message");
-    
+
                         newP.textContent = "User already exist";
-    
+
                         b.prepend(newP);
                     }else{
                         var b = document.getElementById("register-form");
                         var newP = document.createElement('p');
                         newP.classList.add("error-message");
-    
+
                         newP.textContent = "Internal Error : Call the web-master";
-    
+
                         b.prepend(newP);
                     }
                 }
-            }); 
+            });
         }
     }
 
@@ -151,24 +158,24 @@ define(["knockout", "services/dataService"], function (ko, ds) {
             if(document.getElementsByClassName("error-message").length !== 0){
                 removeElementsByClass("error-message");
             }
-            
+
             if(typeof(response.token) !== 'undefined'){
                 username = response.userName;
                 password_global = password;
-                
+
                 changeSearch();
             }else{
                 var b = document.getElementById("login-form");
                 var newP = document.createElement('p');
                 newP.classList.add("error-message");
-    
+
                 newP.textContent = "Bad UserName/Password";
-    
+
                 b.prepend(newP);
             }
         });
     }
-    
+
     // Profil
     var deleteUser = () => {
         ds.deleteItem('api/auth/'+username, (response) => {
@@ -179,7 +186,7 @@ define(["knockout", "services/dataService"], function (ko, ds) {
     var modifyUser = () => {
         var password = document.getElementById("password_modify").value;
         var email = document.getElementById("email_modify").value;
-        
+
         if(password !== "" && email !== ""){
             if(document.getElementsByClassName("work-message").length !== 0){
                 removeElementsByClass("work-message");
@@ -196,30 +203,29 @@ define(["knockout", "services/dataService"], function (ko, ds) {
                     var b = document.getElementById("modify-form");
                     var newP = document.createElement('p');
                     newP.classList.add("work-message");
-    
+
                     newP.textContent = "Modification succeed";
-    
+
                     b.prepend(newP);
-    
+
                     password_global = password;
                 }else{
                     var b = document.getElementById("modify-form");
                     var newP = document.createElement('p');
                     newP.classList.add("error-message");
-    
+
                     newP.textContent = "Internal Error : Call the web-master";
-    
+
                     b.prepend(newP);
                 }
             });
         }
     }
-    
-    // Search
+
     var searchText = () =>
     {
         var searchTextVar = document.getElementById("searchTextInput").value;
-        
+
         if(searchTextVar !== ""){
             var url = 'api/posts/search';
             ds.post(url, { SearchText: searchTextVar, UserName: username }, (response) => {
@@ -228,13 +234,13 @@ define(["knockout", "services/dataService"], function (ko, ds) {
                 if(document.getElementsByClassName("clickable-row").length !== 0){
                     removeElementsByClass("clickable-row");
                 }
-                
+
                 if(typeof(response.token) === 'undefined')
                 {
                     document.getElementById("questionTable").hidden = false;
                     document.getElementById("answerTable").hidden = false;
-                    
-                    for (i = 0; i < response.length; i++) {
+
+                    for (i = 0; i < 5; i++) {
                         if(response[i].title === null){
                             var b = document.getElementById("answerTable");
                             var newTr = document.createElement('tr');
@@ -259,14 +265,15 @@ define(["knockout", "services/dataService"], function (ko, ds) {
                             var newBody = document.createElement('td');
                             newBody.textContent = response[i].body;
                             var newDate = document.createElement('td');
-                            newDate.textContent = "response[i].creationDate";
+                            newDate.textContent = response[i].creationDate;
                             var newFavorite = document.createElement('td');
 
                             var favorite = document.createElement('button');
                             newFavorite.append(favorite);
-                        
+
                             var img = document.createElement('img');
                             img.setAttribute("src", "css/img/notfavorite.png");
+                            img.classList.add("star-img");
                             favorite.append(img);
 
                             newTr.append(newText);
@@ -281,11 +288,12 @@ define(["knockout", "services/dataService"], function (ko, ds) {
             });
         }
     }
-    
+
     // Return functions
     return {
         currentContent,
         changeContent,
+        changePost,
         changeLogin,
         changeHistory,
         changeSearch,
@@ -297,7 +305,7 @@ define(["knockout", "services/dataService"], function (ko, ds) {
         modifyUser,
         searchText
     };
-    
+
     // Helpers
     function removeElementsByClass(className){
         var elements = document.getElementsByClassName(className);
