@@ -32,11 +32,13 @@ define(["knockout", "services/dataService"], function (ko, ds) {
         document.getElementById("historyActive").className = "";
         document.getElementById("marksActive").className = "";
         document.getElementById("profileActive").className = "";
+        document.getElementById("detailActive").className = "";
         document.getElementById("menuActive").hidden = true;
     };
     var changeDetailPost = (id_post) => {
         clearActive();
         currentContent("postTemplate");
+        document.getElementById("detailActive").className = "active";
         document.getElementById("menuActive").hidden = false;
 
         ds.post('api/posts', { Id: id_post }, (response) => {
@@ -44,11 +46,11 @@ define(["knockout", "services/dataService"], function (ko, ds) {
             var newTr = document.createElement('tr');
 
             var newTitle = document.createElement('td');
-            newText.textContent = response.title;
+            newTitle.textContent = response.title;
             var newBody = document.createElement('td');
             newBody.textContent = response.post.body;
             var newDate = document.createElement('td');
-            newDate.textContent = response.closeddate;
+            newDate.textContent = response.closedDate;
             
             newTr.append(newTitle);
             newTr.append(newBody);
@@ -61,9 +63,9 @@ define(["knockout", "services/dataService"], function (ko, ds) {
                 var newTr = document.createElement('tr');
 
                 var newBody = document.createElement('td');
-                newText.textContent = response.acceptanswerpost.body;
+                newBody.textContent = response.acceptAnswerPost.body;
                 var newDate = document.createElement('td');
-                newDate.textContent = response.acceptanswerpost.creationdate;
+                newDate.textContent = response.acceptAnswerPost.creationDate;
                 
                 newTr.append(newBody);
                 newTr.append(newDate);
@@ -76,11 +78,11 @@ define(["knockout", "services/dataService"], function (ko, ds) {
                 var newTr = document.createElement('tr');
 
                 var newText = document.createElement('td');
-                newText.textContent = response.post.comments[i].textcontain;
+                newText.textContent = response.post.comments[i].textContain;
                 var newScore = document.createElement('td');
                 newScore.textContent = response.post.comments[i].score;
                 var newDate = document.createElement('td');
-                newDate.textContent = response.post.comments[i].creationdate;
+                newDate.textContent = response.post.comments[i].creationDate;
 
                 newTr.append(newText);
                 newTr.append(newScore);
@@ -93,35 +95,28 @@ define(["knockout", "services/dataService"], function (ko, ds) {
                 var newTr = document.createElement('tr');
 
                 var newBody = document.createElement('td');
-                newBody.textContent = response.post.answers[j].body;
+                newBody.textContent = response.answers[j].body;
                 var newScore = document.createElement('td');
-                newScore.textContent = response.post.answers[j].score;
+                newScore.textContent = response.answers[j].score;
                 var newDate = document.createElement('td');
-                newDate.textContent = response.post.answers[j].creationdate;
-
-                newTr.append(newText);
-                newTr.append(newScore);
-                newTr.append(newDate);
-                b.append(newTr);
+                newDate.textContent = response.answers[j].creationDate;
+                var newComments = document.createElement('td');
                 
+                var list = document.createElement('ul');
                 for(var k = 0 ; k < response.answers[j].comments.length ; k++)
                 {
-                    var co = document.createElement("table");
-                    var newTr = document.createElement('tr');
-
-                    var newText = document.createElement('td');
-                    newText.textContent = response.post.comments[i].textcontain;
-                    var newScore = document.createElement('td');
-                    newScore.textContent = response.post.comments[i].score;
-                    var newDate = document.createElement('td');
-                    newDate.textContent = response.post.comments[i].creationdate;
-
-                    newTr.append(newText);
-                    newTr.append(newScore);
-                    newTr.append(newDate);
-                    b.append(newTr);
+                    var elem = document.createElement('li');
+                    elem.textContent = response.answers[j].comments[k].textContain;
+                    list.append(elem);
                 }
-                b.append(co);
+
+                newComments.append(list);
+
+                newTr.append(newBody);
+                newTr.append(newScore);
+                newTr.append(newDate);
+                newTr.append(newComments);
+                b.append(newTr);
             }
         });
     };
