@@ -70,19 +70,19 @@
       <caption class="caption-title">Questions</caption>
       <thead>
       <tr>
-        <th>Title</th>
-        <th>Body</th>
-        <th>Date</th>
-        <th>&hearts;</th>
+        <th class="question-title">Title</th>
+        <th class="question-body">Body</th>
+        <th class="question-date">Date</th>
+        <th class="question-fav">&hearts;</th>
       </tr>
       </thead>
 
       <tbody>
       <tr class="clickable-row">
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td class="question-title"></td>
+        <td class="quesiton-body"></td>
+        <td class="question-date"></td>
+        <td class="question-fav"></td>
       </tr>
     </table>
 
@@ -91,15 +91,15 @@
       <caption class="caption-title">Answers</caption>
       <thead>
       <tr>
-        <th>Body</th>
-        <th>Date</th>
+        <th class="answer-body">Body</th>
+        <th class="answer-date">Date</th>
       </tr>
       </thead>
 
       <tbody>
       <tr class="clickable-row">
-        <td></td>
-        <td></td>
+        <td class="answer-body"></td>
+        <td class="answer-date"></td>
       </tr>
       </tbody>
     </table>
@@ -113,12 +113,13 @@
     <table class="table" id="history-table">
       <thead>
       <tr>
-        <th  data-bind="click: changeSearch">Search Text</th>
-        <th>Date</th>
+        <th class="history-text" data-bind="click: changeSearch">Search Text</th>
+        <th class="history-date">Date</th>
       </tr>
       </thead>
 
       <tbody id="history-tbody">
+
       </tbody>
 
       <!-- Table Navigation -->
@@ -142,10 +143,10 @@
   <table class="table" id="marksTable">
     <thead>
     <tr>
-      <th>Body</th>
-      <th>Date</th>
-      <th>&hearts;</th>
-      <th>Annotation</th>
+      <th class="marks-body">Body</th>
+      <th class="marks-date">Date</th>
+      <th class="marks-fav">&hearts;</th>
+      <th class="marks-anno">Annotation</th>
     </tr>
     </thead>
 

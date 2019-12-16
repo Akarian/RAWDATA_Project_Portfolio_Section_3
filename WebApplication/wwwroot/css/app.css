@@ -275,8 +275,6 @@ nav ul li a.active
   top: 10px;
 }
 
-
-
 .answer-body {
   width: 50%;
   height: 10px;
@@ -309,20 +307,20 @@ nav ul li a.active
   width: 40%;
   height: 10px;
 }
-.marks-title {
-  width: 15%;
-  height: 10px;
-}
 .marks-body {
-  width: 30%;
+  width: 25%;
   height: 10px;
 }
 .marks-date {
-  width: 12%;
+  width: 10%;
   height: 10px;
 }
 .marks-fav {
-  width: 3%;
+  width: 5%;
+  height: 10px;
+}
+.marks-anno {
+  width: 20%;
   height: 10px;
 }
 .post-title {

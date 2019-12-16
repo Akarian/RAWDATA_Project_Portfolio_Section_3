@@ -15,10 +15,10 @@ namespace StackOverFlow.Tests
     
     public class WebServiceTests
     {
-        private const string AuthApi = "http://localhost:5001/api/auth";
-        private const string MarkApi = "http://localhost:5001/api/mark";
-        private const string PostsApi = "http://localhost:5001/api/posts";
-        private const string SearchApi = "http://localhost:5001/api/search";
+        private const string AuthApi = "https://localhost:5001/api/auth";
+        private const string MarkApi = "https://localhost:5001/api/mark";
+        private const string PostsApi = "https://localhost:5001/api/posts";
+        private const string SearchApi = "https://localhost:5001/api/search";
 
         /* /api/auth/users */
         [Fact]

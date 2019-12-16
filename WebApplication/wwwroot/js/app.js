@@ -148,8 +148,10 @@ define(["knockout", "services/dataService"], function (ko, ds) {
 
                     var newText = document.createElement('td');
                     newText.textContent = response[i].text;
+                    newText.classList.add("history-text");
                     var newDate = document.createElement('td');
                     newDate.textContent = response[i].date;
+                    newDate.classList.add("history-date");
 
                     newTr.append(newText);
                     newTr.append(newDate);
@@ -180,10 +182,14 @@ define(["knockout", "services/dataService"], function (ko, ds) {
 
                     var newText = document.createElement('td');
                     newText.textContent = response[i].post.body;
+                    newText.classList.add("marks-body");
                     var newDate = document.createElement('td');
                     newDate.textContent = response[i].date;
+                    newDate.classList.add("marks-date");
                     var newFavorite = document.createElement('td');
+                    newFavorite.classList.add("marks-fav");
                     var newAnnotation = document.createElement('td');
+                    newAnnotation.classList.add("marks-anno");
 
                     var favorite = document.createElement('button');
                     newFavorite.append(favorite);
