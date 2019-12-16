@@ -11,7 +11,6 @@
     };
 
     var post = (url, jObject, callback) => {
-        //console.log(jObject)
         fetch(url, {
             method: 'POST',
             headers: {

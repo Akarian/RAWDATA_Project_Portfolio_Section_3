@@ -5,7 +5,7 @@ define(["knockout", "services/dataService"], function (ko, ds) {
     
     var currentContent = ko.observable("loginTemplate");
 
-    //
+    
     var changeFavorite = (id_post) => {
         var elem = document.getElementById("favorite_"+id_post);
         
@@ -27,6 +27,7 @@ define(["knockout", "services/dataService"], function (ko, ds) {
     }
     
     // Routes
+
     var clearActive = () => {
         document.getElementById("searchActive").className = "";
         document.getElementById("historyActive").className = "";
