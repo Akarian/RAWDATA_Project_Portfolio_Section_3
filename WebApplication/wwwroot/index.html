@@ -142,20 +142,14 @@
   <table class="table" id="marksTable">
     <thead>
     <tr>
-      <th>Title</th>
       <th>Body</th>
       <th>Date</th>
       <th>&hearts;</th>
+      <th>Annotation</th>
     </tr>
     </thead>
 
     <tbody>
-    <tr class="clickable-row">
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
     </tbody>
   </table>
 </script>
@@ -194,6 +188,72 @@
         <button data-bind="click: deleteUser">Delete</button>
       </div>
     </div>
+  </div>
+</script>
+
+<!-- Post Template -->
+<script type="text/html" id="postTemplate">
+  <div class="post-page" id="post-parent">
+    <h1 class="templateTitle">StackOverflow Post</h1>
+
+    <!-- Post table -->
+    <table class="table" id="post-table">
+      <caption class="caption-title">Post</caption>
+      <thead>
+      <tr>
+        <th class="post-title">Title</th>
+        <th class="post-body">Body</th>
+        <th class="post-date">Date</th>
+      </tr>
+      </thead>
+
+      <tbody id="body-post-table">
+      </tbody>
+    </table>
+
+    <!-- Accepted Answer table -->
+    <table class="table" id="accepted-answer-table">
+      <caption class="caption-title">Accepted Answers</caption>
+      <thead>
+      <tr>
+        <th class="accepted-answer-body">Body</th>
+        <th class="accepted-answer-date">Date</th>
+      </tr>
+      </thead>
+
+      <tbody id="body-accepted-answer-table">
+      </tbody>
+    </table>
+
+    <!-- Comments table -->
+    <table class="table" id="comments-table">
+      <caption class="caption-title">Comments</caption>
+      <thead>
+      <tr>
+        <th class="comments-text">Text</th>
+        <th class="comments-score">Score</th>
+        <th class="comments-date">Date</th>
+      </tr>
+      </thead>
+
+      <tbody id="body-comments-table">
+      </tbody>
+    </table>
+    
+    <!-- Answers table -->
+    <table class="table" id="answers-table">
+    <caption class="caption-title">Answers</caption>
+    <thead>
+    <tr>
+      <th class="answers-body">Body</th>
+      <th class="answers-score">Score</th>
+      <th class="answers-date">Date</th>
+    </tr>
+    </thead>
+
+    <tbody id="body-answers-table">
+    </tbody>
+  </table>
   </div>
 </script>
 

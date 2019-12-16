@@ -242,7 +242,129 @@ nav ul li a.active
   transform: translate(-50%, -50%);
 }
 
-table.table {
+
+#questionTable {
+  top: 50px;
+  position: relative;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+#answerTable {
+  top: 60px;
+  position: relative;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+#history-table {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 60%;
+}
+#post-table {
+  position:relative;
+}
+#accepted-answer-table {
+  position:relative;
+  top: 10px;
+}
+#comments-table {
+  position:relative;
+  top: 10px;
+}
+
+
+
+.answer-body {
+  width: 50%;
+  height: 10px;
+}
+.answer-date {
+  width: 10%;
+  height: 10px;
+}
+.question-title{
+  width: 20%;
+  height: 10px;
+}
+.question.body{
+  width: 20%;
+  height: 10px;
+}
+.question-date{
+  width: 15%;
+  height: 10px;
+}
+.question-fav{
+  width: 5%;
+  height: 10px;
+}
+.history-text {
+  width: 80%;
+  height: 10px;
+}
+.history-date {
+  width: 40%;
+  height: 10px;
+}
+.marks-title {
+  width: 15%;
+  height: 10px;
+}
+.marks-body {
+  width: 30%;
+  height: 10px;
+}
+.marks-date {
+  width: 12%;
+  height: 10px;
+}
+.marks-fav {
+  width: 3%;
+  height: 10px;
+}
+.post-title {
+  width: 20%;
+  height: 10px;
+}
+.post-body {
+  width: 30%;
+  height: 10px;
+}
+.post-date {
+  width: 10%;
+  height: 10px;
+}
+.accepted-answer-body {
+  width: 45%;
+  height: 10px;
+}
+.accepted-answer-date {
+  width: 15%;
+  height: 10px;
+}
+.comments-text {
+  width: 35%;
+  height: 10px;
+}
+.comments-score {
+  width: 10%;
+  height: 10px;
+}
+.comments-date {
+  width: 15%;
+  height: 10px;
+}
+
+
+.sort-arrows{
+  width: 15px;
+  padding-left: 10px;
+}
+.table {
+  table-layout: fixed;
   border: 2px solid black;
   position: absolute;
   background-color: white;
@@ -251,24 +373,19 @@ table.table {
   margin-right: 20%;
   text-align: left;
   border-collapse: collapse;
+  max-width: 60%;
 }
-#questionTable {
-    margin-top: 70px;
-}
-#answerTable {
-    margin-top: 350px;
-    margin-bottom: 30px;
-}
-.sort-arrows{
-  width: 15px;
-  padding-left: 10px;
+table.table td {
+  overflow:hidden;
+  height: 10px;
 }
 table.table td, table.table th {
   border: 1px solid black;
   padding: 15px 10px;
 }
-table.able tbody td {
+table.table tbody td {
   font-size: 13px;
+  text-overflow: ellipsis;
 }
 table.table tr:nth-child(even) {
   background: #d6dafd;
@@ -276,6 +393,7 @@ table.table tr:nth-child(even) {
 table.table thead {
   background: #7F8BFA;
   border-bottom: 2px solid #444444;
+  max-height: 15px;
 }
 table.table thead th {
   font-size: 15px;
@@ -287,21 +405,13 @@ table.table thead th {
 table.table thead th:first-child {
   border-left: none;
 }
-table.table tbody td:first-child {
-  width: 30%;
-}
-table.table tbody td:nth-child(2) {
-  width: 50%;
-}
-table.table tbody td:nth-child(3) {
-  width: 15%;
-}
-table.table tbody td:last-child {
-  width: 5%;
-}
 .clickable-row:hover{
   background: #ADB5FC;
   transition: 0.5s;
+}
+.clickable-row{
+  max-height: 10px;
+  text-overflow: hidden;
 }
 
 table.table tr:nth-child(even):hover {
@@ -334,10 +444,6 @@ table.table tfoot .links a:hover{
   background: #7F8BFA;
   color: white;
   transition: 0.3s;
-}
-
-table#history-table td:last-child {
-  width: 8%;
 }
 
 .profile-wrapper {
@@ -425,4 +531,8 @@ table#profile-table .clickable-row:hover{
   color: #0D066C;
   text-align: center;
   margin-bottom: 10px;
+}
+.star-img {
+  height: 10px;
+  width: 10px;
 }
