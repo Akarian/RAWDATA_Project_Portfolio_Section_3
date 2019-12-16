@@ -23,7 +23,7 @@ namespace DataAccessLayer
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseNpgsql(
-                "host=localhost;db=stackoverflow;uid=postgres;pwd=atdeti6!");
+                "host=rawdata.ruc.dk;db=raw14;uid=raw9;pwd=OHiSOnuk");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
