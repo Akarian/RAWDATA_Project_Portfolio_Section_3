@@ -360,7 +360,7 @@ namespace DataAccessLayer
                 from post in db.Posts
                 join answer in db.Answers on post.Id equals answer.Id
                 where answer.QuestionId == postid
-                select new Post() {Id = post.Id, Body = post.Body, Score = post.Score};
+                select new Post() {Id = post.Id, Body = post.Body, Score = post.Score, CreationDate = post.CreationDate};
 
             var answers = query.ToList();
 
