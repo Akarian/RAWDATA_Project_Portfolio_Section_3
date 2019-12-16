@@ -2,7 +2,6 @@ define(["knockout", "services/dataService"], function (ko, ds) {
     // Global variables
     var username = "";
     var password_global = "";
-    
     var currentContent = ko.observable("loginTemplate");
 
     //
