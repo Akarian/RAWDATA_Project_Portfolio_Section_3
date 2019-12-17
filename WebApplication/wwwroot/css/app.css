@@ -246,19 +246,16 @@ nav ul li a.active
 #questionTable {
   top: 50px;
   position: relative;
-  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 #answerTable {
   top: 60px;
   position: relative;
-  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 #history-table {
-  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   width: 60%;
@@ -274,7 +271,10 @@ nav ul li a.active
   position:relative;
   top: 10px;
 }
-
+#answers-table{
+  position:relative;
+  top: 10px;
+}
 .answer-body {
   width: 50%;
   height: 10px;

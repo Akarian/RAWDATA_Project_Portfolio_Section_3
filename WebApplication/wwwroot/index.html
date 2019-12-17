@@ -18,7 +18,7 @@
         <li><a href="" data-bind="click: changeMarks" id="marksActive">Marks</a></li>
         <li><a href="" data-bind="click: changeProfile" id="profileActive">Profile</a></li>
         <li><a href="" data-bind="click: changeDetailPost(1669)" id="detailActive">Detail</a></li>
-        <li><a href="" data-bind="click: changeLogin()" >Logout</a></li>
+        <li><a href="" data-bind="click: changeLogin" >Logout</a></li>
       </ul>
     </nav>
   <div class="clearfix"></div>
@@ -34,20 +34,20 @@
 
     <!-- Login form -->
     <div class="form">
-      <form id="register-form">
-        <input type="text" id="name_register" placeholder="name"/>
-        <input type="password" id="password_register" placeholder="password"/>
-        <input type="text" id="email_register" placeholder="email address" required pattern="[^@]+@[^@]+\.[a-zA-Z]{2,6}"/>
+      <div class="form-group" id="register-form">
+        <input type="text" class="form-control" id="name_register" placeholder="name"/>
+        <input type="password" class="form-control" id="password_register" placeholder="password"/>
+        <input type="email" class="form-control" id="email_register" placeholder="email address" required pattern="[^@]+@[^@]+\.[a-zA-Z]{2,6}"/>
         <button data-bind="click: registerUser">create</button>
         <p class="message">Already registered? <a href="" data-bind="click: changeContent">Sign In</a></p>
-      </form>
+      </div>
 
-      <form id="login-form">
-        <input type="text" placeholder="username" id="name_login"/>
-        <input type="password" placeholder="password" id="password_login"/>
+      <div class="form-group" id="login-form">
+        <input type="text" class="form-control" placeholder="username" id="name_login"/>
+        <input type="password" class="form-control" placeholder="password" id="password_login"/>
         <button data-bind="click: loginUser">login</button>
         <p class="message">Not registered? <a href="" data-bind="click: changeContent">Create an account</a></p>
-      </form>
+      </div>
     </div>
   </div>
 </script>

@@ -378,8 +378,8 @@ namespace DataAccessLayer
             using var db = new StackoverflowContext();
             var search = "java";
             var function = db.Posts
-                .FromSqlRaw("SELECT * FROM exactmatchqueryrankingtfidf(\'"+searchtext+"\')")
-                .Select(post => new Post(){Id = post.Id, Body = post.Body, Title = post.Title, CreationDate = post.CreationDate})
+                .FromSqlRaw("SELECT * FROM exactmatchquery(\'" + searchtext+"\')")
+                .Select(post => new Post() { Id = post.Id, Body = post.Body, Title = post.Title })
                 .ToList(); 
 
             var posts = function.ToList();
