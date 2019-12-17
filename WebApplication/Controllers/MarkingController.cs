@@ -25,7 +25,7 @@ namespace WebServiceToken.Controllers
         {
             _dataService = dataService;
         }
-
+        
         [HttpPost("markings")]
         public ActionResult GetMarkings([FromBody]User user)
         {
